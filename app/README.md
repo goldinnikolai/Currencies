@@ -1,1 +1,1 @@
-This is demo application
+Тестовый проект для демонстрации
