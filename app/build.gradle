@@ -1,0 +1,48 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion targetSdk
+    defaultConfig {
+        applicationId "com.revolut.currencies"
+        minSdkVersion minSdk
+        targetSdkVersion targetSdk
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets.each {
+        it.java.srcDirs += "src/${it.name}/kotlin"
+    }
+    buildToolsVersion '27.0.3'
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    implementation anko.sdk15
+    implementation anko.sdk15L
+    implementation anko.appCompat
+    implementation anko.recyclerView
+    implementation support.design
+    implementation support.appCompat
+    implementation support.recyclerView
+
+    implementation retrofit.moshi
+    implementation retrofit.retrofit
+
+    testImplementation 'junit:junit:4.12'
+
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
